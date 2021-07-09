@@ -14,33 +14,47 @@ void main() {
   ),
   );
 }
+class DicePage extends StatefulWidget {
+  const DicePage({Key? key}) : super(key: key);
 
-class DicePage extends StatelessWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+
+  int leftDiceNumber = 1;
+
   @override
   Widget build(BuildContext context) {
+
     return Center(
       child: Row(
         children: <Widget>[
-        Expanded(
+          Expanded(
             child: TextButton(
               onPressed: () {
-               print('左のボタンが押されました');
+                setState(() {
+                  leftDiceNumber = 2;
+                  print('diceNumber = $leftDiceNumber');
+                });
               },
-
-              child: Image.asset('images/dicee_01.png'),
+              child: Image.asset('images/dicee_0$leftDiceNumber.png'),
             ),
-        ),
+          ),
           Expanded(
             child: TextButton(
               onPressed: () {
                 print('右のボタンが推されました');
               },
-                child: Image.asset('images/dicee_02.png'),
+              child: Image.asset('images/dicee_01.png'),
             ),
-            ),
+          ),
         ],
       ),
     );
   }
 }
+
+
 
